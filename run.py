@@ -1,7 +1,7 @@
 # Auto-Archive: Run Module
 # Version: v0.0.3-dev
 # Path: `\run.py`
-# Updated: 09-20-2023
+# Updated: 09-22-2023
 
 # ⚠️ ACTIVE DEVELOPMENT ⚠️ #
 ## ## ## ## ## ## ## ## ## ##
@@ -11,10 +11,8 @@ from app.routes import home_routes, upload_routes, archive_routes, clericus_rout
 import os
 import openai
 from flask import Flask
-
-app = Flask(__name__)
-
 # Import log configuration
+from core.log_config import run_logger
 
 # Flask configuration
 app = Flask(__name__, template_folder='app/templates',
