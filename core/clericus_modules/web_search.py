@@ -1,3 +1,8 @@
+# Clericus Module: Web Search Function
+# Version: v0.0.3-dev
+# Path: `\core\clericus_modules\web_search.py`
+# Updated: 09-21-2023
+
 import requests
 import os
 from log_config import handle_openai_error, handle_generic_error, clericus_logger
