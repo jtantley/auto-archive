@@ -5,7 +5,16 @@
 
 import os
 import logging
+from logging.handlers import TimedRotatingFileHandler
 from log_config import clericus_logger
+
+# Define logs_dir variable
+# Define the logs directory path relative to the current script location
+logs_dir = os.path.join(os.path.dirname(__file__), 'logs')
+
+# Create the logs directory if it doesn't exist
+if not os.path.exists(logs_dir):
+    os.makedirs(logs_dir)
 
 
 def handle_openai_error(e, logger):
