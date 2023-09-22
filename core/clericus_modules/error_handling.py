@@ -6,7 +6,7 @@
 import os
 import logging
 from logging.handlers import TimedRotatingFileHandler
-from log_config import clericus_logger
+from ..log_config import clericus_logger
 
 # Define logs_dir variable
 # Define the logs directory path relative to the current script location
