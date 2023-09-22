@@ -18,9 +18,13 @@ if not os.path.exists(logs_dir):
     os.makedirs(logs_dir)
 
 
-def handle_generic_error(error, logger):
-    logger.error(f'An error occurred: {error}', exc_info=True)
+def handle_generic_error(e, logger):
+    logger.error(f'Generic error: {str(e)}')
+    return {'error': f'A generic error occurred: {str(e)}'}
 
+def handle_openai_error(error, logger):
+    logger.error(f'An OpenAI error occurred: {error}', exc_info=True)
+    return {'error': f'An OpenAI API error occurred: {str(e)}'}
 
 def setup_logger(name, log_file, level=logging.INFO, log_format=None):
     # Setup as many loggers as you want
