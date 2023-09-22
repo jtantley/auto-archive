@@ -1,0 +1,32 @@
+<!-- Auto-Archive: Clericus AI Chatbot Frontend -->
+<!---Version: v0.0.3-dev -->
+<!-- File: `\app\templates\clericus.html` -->
+<!-- Updated: 09-21-23 : Moved JavaScript to separate file -->
+
+{% extends "base.html" %} {% block content %}
+<div class="chat-module">
+  <div class="chat-header">
+    <div class="chat-banner">
+      <img
+        src="{{ url_for('static', filename='images/clericus_banner.png') }}"
+        alt="Banner"
+      />
+    </div>
+  </div>
+
+  <div class="input-container">
+    <input
+      type="text"
+      id="user_query"
+      class="sans-serif"
+      placeholder="Type your message..."
+    />
+    <button class="btn-chat sans-serif" id="send-msg">Send</button>
+  </div>
+
+  <div id="chat-messages" class="chat-window sans-serif"></div>
+</div>
+
+<script src="{{ url_for('static', filename='js/clericus.js') }}"></script>
+
+{% endblock %}

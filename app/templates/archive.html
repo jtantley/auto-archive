@@ -1,0 +1,163 @@
+<!--Archive Page [`archive.html`]-->
+<!--Includes Clericus AI Assistant-->
+<!--Version: `v0.0.25-dev[:082723]`-->
+<!--Updated: 08/27/23-->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Auto-Archive</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Lexend|Archivo|Ubunto"
+    />
+    <link
+      rel="shortcut icon"
+      href="{{ url_for('static', filename='images/favicon-32x32.png') }}"
+    />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  </head>
+
+  <body class="archive-page">
+    <!-- CONTAINER -->
+    <div class="container">
+      <!-- Left Section: Archive Profiles-->
+      <div class="left-section">
+        <!-- Left: Banner Image -->
+        <a href="/"
+          ><img
+            class="banner"
+            src="{{ url_for('static', filename='images/banner-650x100.png') }}"
+            alt="Logo banner"
+        /></a>
+        <!-- Left: H1 Heading - currently removed -->
+        <!-- <h1>Archive Profiles</h1> -->
+
+        <!-- Left: Archive Profile Table -->
+        <table class="archive-table">
+          <thead>
+            <tr>
+              <th class="table-title">Title</th>
+              <th class="table-summary">Summary</th>
+              <th class="table-button"></th>
+            </tr>
+          </thead>
+          <tbody class="archive-table-body">
+            {% for profile in profiles %}
+            <tr class="archive-profile">
+              <td>{{ profile.profile_title }}</td>
+              <td class="profile-summary"></td>
+              <td>
+                <button
+                  class="btn-archive view-profile"
+                  data-profile-id="{{ profile.profile_id }}"
+                >
+                  Full Profile
+                </button>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+
+        <!-- Footer Buttons -->
+        <!--these are temporary; buttons need to be added below the container-->
+        <div class="archive-footer">
+          <a href="/" class="button btn-home">Home Page</a>
+          <a href="/upload" class="button btn-upload">Upload Document</a>
+        </div>
+      </div>
+
+      <!-- Modal Window: Archive Profiles -->
+      <div id="profile-modal" class="modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <h2 id="modal-title" class="modal-title"></h2>
+          <p><strong>Summary:</strong> <span id="modal-summary"></span></p>
+          <button id="download-full-text">Download full text</button>
+          <p><strong>Category:</strong> <span id="modal-category"></span></p>
+          <div id="modal-entities" class="entity-list"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Section -->
+    <div class="right-section">
+      <!-- Previously held a chat module; currently empty -->
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            var profiles = {{ profiles | tojson | safe }};
+            $(".archive-profile").each(function (index) {
+                var profile = profiles[index];
+                var summary = profile.profile_summary;
+                var truncatedSummary = summary.split(" ").slice(0, 30).join(" ") + "...";
+                $(this).find(".profile-summary").text(truncatedSummary);
+            });
+
+            var modal = document.getElementById("profile-modal");
+            var span = document.getElementsByClassName("close")[0];
+
+            $(".view-profile").click(function () {
+                var profileId = $(this).data("profile-id");
+                var profile = profiles.find(function (profile) { return profile.profile_id == profileId; });
+                $("#modal-title").text(profile.profile_title);
+                $("#modal-summary").text(profile.profile_summary);
+                $("#modal-category").text(profile.category_name);
+                $("#modal-entities").empty();
+
+                // List entities horizontally and handle the "View full entity list" button
+                var entitiesHTML = '<table><tr>';
+                profile.entities.slice(0, 10).forEach(function (entity) {
+                    entitiesHTML += '<td>' + entity.entity_name + ' (' + entity.entity_type + ')</td>';
+                });
+                entitiesHTML += '</tr></table>';
+                if (profile.entities.length > 10) {
+                    entitiesHTML += '<button id="view-full-entity-list">View full entity list</button>';
+                }
+                $("#modal-entities").html(entitiesHTML);
+
+                // Handle "Download full text" button
+                $("#download-full-text").click(function () {
+                    var blob = new Blob([profile.profile_text], { type: 'text/plain' });
+                    var link = document.createElement('a');
+                    link.href = window.URL.createObjectURL(blob);
+                    link.download = 'full_text.txt';
+                    link.click();
+                });
+
+                modal.style.display = "block";
+            });
+
+            span.onclick = function () {
+                modal.style.display = "none";
+            };
+
+            window.onclick = function (event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            };
+
+            // Handle "View full entity list" button
+            $(document).on('click', '#view-full-entity-list', function () {
+                var fullEntityListHTML = '<table><tr>';
+                var profileId = $(".view-profile").data("profile-id");
+                var profile = profiles.find(function (profile) { return profile.profile_id == profileId; });
+                profile.entities.forEach(function (entity) {
+                    fullEntityListHTML += '<td>' + entity.entity_name + ' (' + entity.entity_type + ')</td>';
+                });
+                fullEntityListHTML += '</tr></table>';
+                $("#modal-entities").html(fullEntityListHTML);
+            });
+      });
+    </script>
+  </body>
+</html>

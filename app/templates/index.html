@@ -1,0 +1,33 @@
+{% extends "base.html" %} {% block content %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Auto-Archive</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+    <link
+      rel="shortcut icon"
+      href="{{ url_for('static', filename='images/favicon-32x32.png') }}"
+    />
+  </head>
+  <body class="default-body">
+    <div class="container">
+      <img
+        class="banner"
+        src="{{ url_for('static', filename='images/banner-650x100.png') }}"
+        alt="Logo banner"
+      />
+      <h1>Welcome to Auto-Archive!</h1>
+      <p>
+        This application allows you to automatically archive documents. It will
+        process the document's contents, generate a title and summary, and
+        create an Archive Profile for the document.
+      </p>
+    </div>
+  </body>
+</html>
+
+{% endblock %}

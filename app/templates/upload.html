@@ -1,0 +1,39 @@
+{% extends "base.html" %} {% block content %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Upload Document</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+    <link
+      rel="shortcut icon"
+      href="{{ url_for('static', filename='images/favicon-32x32.png') }}"
+    />
+  </head>
+  <body class="default-body">
+    <div class="container upload-container">
+      <a href="/"
+        ><img
+          class="banner upload-banner"
+          src="{{ url_for('static', filename='images/banner-650x100.png') }}"
+          alt="Logo banner"
+      /></a>
+      <h2>Upload a document to create an Archive Profile</h2>
+      <form method="POST" enctype="multipart/form-data">
+        <input type="file" name="file" />
+        <input
+          class="button upload-button"
+          type="submit"
+          value="Upload Document"
+        />
+      </form>
+    </div>
+  </body>
+</html>
+
+{% endblock %}

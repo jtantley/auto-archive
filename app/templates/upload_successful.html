@@ -1,0 +1,35 @@
+{% extends "base.html" %} {% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Upload Successful</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      href="{{ url_for('static', filename='images/favicon-48x48.ico') }}"
+    />
+  </head>
+
+  <body class="default-body">
+    <div class="container upload-container">
+      <div class="icon-container">
+        <img
+          class="icon"
+          src="{{ url_for('static', filename='images/icon-512x512.png') }}"
+          alt="Auto-Archive logo"
+        />
+      </div>
+      <h1>Upload Successful!</h1>
+      <p>Your document has been successfully uploaded and processed.</p>
+    </div>
+  </body>
+</html>
+
+{% endblock %}

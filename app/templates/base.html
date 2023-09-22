@@ -1,0 +1,47 @@
+<!-- Auto-Archive: Jinja2 Base Template -->
+<!---Version: v0.0.25-dev -->
+<!-- File: `\\app\\templates\\base.html` -->
+<!-- Updated: 08-29-23 -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!--Import Google Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100;0,200;0,300;0,400;0,500;1,100;1,200;1,300;1,400;1,500&family=Bitter:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Copse&family=Cutive&family=Lexend:wght@100;200;300;400;500;600;700;800;900&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Sanchez:ital@0;1&family=Vesper+Libre:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!--Import CSS-->
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+
+    <!--Import jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!--Set Favicon-->
+    <link rel="icon" type: "image/x-icon" href="{{ url_for('static',
+    filename='images/favicon-48x48.ico') }}" />
+
+    <title>Auto-Archive: Automated Preservation of Historical Records</title>
+  </head>
+  <body>
+    <!-- Jinja2 -->
+    {% block content %} {% endblock %}
+
+    <!-- Footer Navigation Buttons -->
+    <div class="footer-buttons clericus-footer">
+      <a href="/" class="button">Home Page</a>
+      <a href="/upload" class="button">Upload Document</a>
+      <a href="/archive" class="button">Archive Profiles</a>
+      <a href="/clericus" class="button">Clericus AI</a>
+    </div>
+  </body>
+</html>
