@@ -1,0 +1,459 @@
+/* Auto-Archive CSS Stylesheet */
+/* Version: v0.0.3-dev */
+/* File path: `\app\static\css\style.css` */
+/* Updated: 08-28-23 */
+
+/* Global Styles */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+  margin: 0;
+  padding: 0;
+}
+
+body.default-body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.container {
+  text-align: center;
+  margin: 20px;
+}
+
+h1,
+h2 {
+  color: #444b5a;
+}
+
+.button {
+  display: inline-block;
+  font-size: 20px;
+  margin: 20px 10px;
+  padding: 15px 25px;
+  background-color: #007bff;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 3px;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: #45a000;
+}
+
+.home-button {
+  background-color: #007bff;
+}
+
+.home-button:hover {
+  background-color: #0056b3;
+}
+
+/* ------------------ */
+
+/* Upload Page Styles */
+.upload-container {
+  margin: 50px 0;
+}
+
+.upload-button {
+  padding: 5px 10px;
+  font-size: 0.9em;
+}
+
+.upload-button:hover {
+  background-color: #005777;
+}
+/* End Upload Page Styles */
+
+/* ------------------ */
+
+/* Image Styles */
+/* Banner Image Styles */
+.banner {
+  width: 650px;
+  margin-bottom: 40px;
+  border-radius: 10px;
+}
+
+.upload-banner {
+  width: 80%;
+}
+
+/* Icon Image Styles -- originally for `upload_successful.html` page */
+.icon-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 256px; /* Reduce the height to half */
+}
+
+.icon {
+  width: 50%;
+  height: 50%;
+}
+
+/* Limit image size on larger screens, use the following code: */
+@media screen and (min-width: 768px) {
+  .icon {
+    width: 256px;
+    height: 256px;
+  }
+}
+/* End Image Styles */
+
+/* ------------------ */
+
+/* Archive Page Styles */
+
+/* Default Archive Page */
+body.archive-page {
+  display: flex;
+  font-family: Arial, sans-serif;
+  align-items: flex-start;
+  justify-content: flex-start;
+  height: auto;
+  background-color: #f4f4f4ac;
+  margin: 0;
+  padding: 0;
+}
+
+.archive-page .container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.archive-page .left-section {
+  width: 68%;
+  padding: 20px;
+}
+
+.archive-page .right-section {
+  width: 32%;
+  padding: 20px;
+  background-color: #f9f9f9;
+  margin-top: 50px;
+}
+
+.btn-archive {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+  transition-duration: 0.4s;
+}
+
+.btn-archive:hover {
+  background-color: #45a000;
+}
+
+.archive-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.archive-table th {
+  padding: 12px 0px;
+  text-align: left;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.archive-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+  background-color: #fff;
+}
+
+.table-title {
+  width: 35%;
+}
+
+.table-summary {
+  width: 55%;
+}
+
+.table-button {
+  width: 10%;
+}
+/* End of Archive Profile Section */
+
+/* ------------------ /*
+  
+  
+  /* Modal Window Section */
+.modal {
+  display: none;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 10% auto;
+  padding: 20px;
+  width: 60%;
+}
+
+.modal-content p {
+  margin: 10px 0;
+}
+
+.modal-content strong {
+  font-weight: bold;
+}
+
+.modal-title {
+  margin: 0;
+  line-height: 1.42857143;
+}
+
+.modal-header {
+  padding: 15px;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.entity-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+button#view-full-entity-list,
+button#download-full-text {
+  font-size: 18px;
+  margin: 20px 10px;
+  padding: 5px 10px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+  display: inline-block;
+}
+
+button#view-full-entity-list:hover,
+button#download-full-text:hover {
+  background-color: #007bff;
+}
+
+/* end modal window section */
+
+/* Archive Page Footer */
+.archive-footer {
+  display: block;
+  margin-top: 20px;
+}
+
+/* Archive Page Footer Buttons */
+
+.archive-footer .btn-home {
+  font-size: 20px;
+}
+
+.archive-footer .btn-upload {
+  font-size: 20px;
+  background-color: #45a049;
+}
+
+.btn-home:hover {
+  background-color: #45a049;
+}
+
+.btn-upload:hover {
+  background-color: #007bff;
+}
+
+/* ------------------ */
+
+/* Clericus AI Chatbot Page Styles */
+
+.chat-module {
+  width: 75%;
+  margin: auto;
+  margin-top: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.chat-header {
+  background-color: #246ab4;
+  color: white;
+  margin: 10px 0px 5px;
+  padding: 5px;
+  text-align: center;
+}
+
+.chat-header h1 {
+  color: #ffffff;
+  font-size: 2.4em;
+  font-weight: 500;
+}
+
+.chat-banner {
+  padding: 20px 0px 0px;
+  margin: 10px 0px;
+  width: auto;
+}
+
+.chat-banner img {
+  padding: 20px 0px 0px;
+  margin: 10px 0px;
+  width: 65%;
+  border-radius: 5px;
+}
+
+.chat-icon {
+  width: 25%;
+  line-height: 1.25em;
+}
+
+.input-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+#user_query {
+  width: 90%;
+  padding: 10px 5px;
+  border: 1px solid #ccc;
+  margin: 10px 0px 10px 5px;
+}
+
+.btn-chat {
+  background-color: #4caf50;
+  color: #ffffff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  transition-duration: 0.4s;
+  margin: 5px 0px 10px 5px;
+  align-self: flex-end;
+  font-size: 1.2em;
+}
+.btn-chat:hover {
+  background-color: #1b63ac;
+}
+
+.chat-window {
+  height: 380px;
+  overflow-y: auto;
+  padding: 10px;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  margin: 10px;
+  text-align: left;
+  font-size: 15px;
+}
+
+/* Chat Window Message Styles */
+.user-message {
+  padding: 10px;
+  margin-bottom: 5px;
+  background-color: #c4f6d6; /* Light green to match color scheme */
+}
+
+.bot-message {
+  padding: 10px;
+  margin-bottom: 5px;
+  background-color: #e0f2f1; /* Light green to match the button color scheme */
+}
+
+.thinking span {
+  opacity: 0;
+  animation: fadeEffect 1.5s infinite;
+}
+
+@keyframes fadeEffect {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* center bottom nav buttons */
+.clericus-footer {
+  text-align: center;
+}
+
+/* Quick Reply Buttons */
+.quick-reply-buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.quick-reply {
+  background-color: #4caf50;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 2px 10px;
+  cursor: pointer;
+  border-radius: 12px;
+}
+
+/* End Clericus AI Chatbot Page Styles */
+
+/* ------------------ */
+
+/* Fonts */
+.sans-serif {
+  font-family: "Lexend", "Archivo", sans-serif;
+}
+
+.serif {
+  font-family: "Sanchez", "Bitter", "Lora", serif;
+}
+
+.monospace {
+  font-family: "Roboto Mono", "Courier New", Courier, monospace;
+}
