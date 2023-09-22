@@ -1,7 +1,7 @@
 # Auto-Archive: Log Config Module
-# Path: `\\core\\log_config.py`
+# Path: `\core\log_config.py`
 # Version: v0.0.3-dev
-# Updated: 09-01-2023
+# Updated: 09-22-2023
 
 # ⚠️ ACTIVE DEVELOPMENT ⚠️ #
 
