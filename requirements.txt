@@ -1,0 +1,7 @@
+docx
+flask
+openai
+psycopg2
+scipy
+spacy
+tokenizers
