@@ -3,19 +3,23 @@
 # Version: v0.0.3-dev
 # Updated: 09-22-2023
 
+#############################
 # ⚠️ ACTIVE DEVELOPMENT ⚠️ #
+## ## ## ## ## ## ## ## ## ##
 
 import logging
 import os
 from logging.handlers import TimedRotatingFileHandler
 
-# Determine the absolute path of the logs directory
 logs_dir = os.path.abspath(os.path.join(
     os.path.dirname(__file__), '..', 'logs'))
 
-# Create the logs directory if it doesn't exist
 if not os.path.exists(logs_dir):
     os.makedirs(logs_dir)
+
+
+def handle_generic_error(error, logger):
+    logger.error(f'An error occurred: {error}', exc_info=True)
 
 
 def setup_logger(name, log_file, level=logging.INFO, log_format=None):
