@@ -1,7 +1,7 @@
 # Clericus Module: Error Handling
-# Updated: 09-21-2023
-# Path: `\core\clericus_modules\error_handling.py`
 # Version: v0.0.3-dev
+# Path: `\core\clericus_modules\error_handling.py`
+# Updated: 09-21-2023
 
 import os
 import logging
