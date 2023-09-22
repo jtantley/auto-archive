@@ -2,17 +2,13 @@
 # Version: v0.0.3-dev
 # Path: `\core\clericus.py`
 # Updated: 09-21-2023
-
 # ⚠️ ACTIVE DEVELOPMENT ⚠️ #
 ## ## ## ## ## ## ## ## ## ##
-
-# 09-20-2023: Added function call handling; error handling; functional conversational context memory
-# 09-21-2023: Added logging; added function call response handling; added session ID parameter to conversation history; added web search function
 
 import os
 import logging
 import openai
-import requests  # For web search
+import requests
 
 # Logging Setup
 log_dir = '../logs'
@@ -29,18 +25,15 @@ logging.basicConfig(filename=log_file_path, level=logging.INFO,
                     format='%(asctime)s:%(levelname)s:%(message)s')
 
 openai.api_key = os.environ['OPENAI_API_KEY']
-serp_api_key = "149b3d1e60ca9e74b11075800f583d32a70a4a426c6162c1b9a1f3f09dfd4efb"
+serp_api_key = os.environ['SERPAPI_API_KEY']
 
 conversation_histories = {}
 
 # Web search function
-
-
 def perform_web_search(query):
     search_url = f"https://api.serpstack.com/search?access_key={serp_api_key}&query={query}"
     response = requests.get(search_url)
     return response.json()
-
 
 def run_clericus_chatbot(messages, session_id):
     conversation_histories.setdefault(session_id, []).extend(messages)
@@ -54,9 +47,9 @@ def run_clericus_chatbot(messages, session_id):
         response = openai.ChatCompletion.create(**payload)
         assistant_reply = response['choices'][0]['message']['content']
 
-        # Web search function call handling
+        # Web search function call
         if "web_search" in assistant_reply:
-            # Using the last user message as the query
+            # Using last user message as query
             search_results = perform_web_search(messages[-1]['content'])
             return search_results
 
@@ -69,7 +62,6 @@ def run_clericus_chatbot(messages, session_id):
     except Exception as generic_exception:
         logging.error(f"Unexpected Error: {generic_exception}")
         return "An unexpected error occurred. Please try again later."
-
 
 def generate_response(user_input, session_id):
     messages = [
