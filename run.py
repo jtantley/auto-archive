@@ -3,15 +3,19 @@
 # Path: `\run.py`
 # Updated: 09-22-2023
 
-## ## ## ## ## ## ## ## ## ##
+#############################
 # ⚠️ ACTIVE DEVELOPMENT ⚠️ #
 ## ## ## ## ## ## ## ## ## ##
 
 from app.routes import home_routes, upload_routes, archive_routes, clericus_routes
 import os
+import sys
 import openai
 from flask import Flask
 from core.log_config import run_logger
+
+# Add the project directory to the PYTHONPATH
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
 # Flask configuration
 app = Flask(__name__, template_folder='app/templates',
