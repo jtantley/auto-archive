@@ -1,3 +1,8 @@
+# Clericus Module: OpenAI Module
+# Version: v0.0.3-dev
+# Path: `\core\clericus_modules\openai_module.py`
+# Updated: 09-21-2023
+
 import openai
 import os
 from log_config import handle_openai_error, handle_generic_error, clericus_logger
@@ -5,13 +10,14 @@ from log_config import handle_openai_error, handle_generic_error, clericus_logge
 OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
 openai.api_key = OPENAI_API_KEY
 
+
 def generate_openai_response(prompt, session_id):
     try:
-        model_engine = 'gpt-3.5-turbo-16k'
+        model_engine = os.getenv('MODEL_ENGINE', 'gpt-3.5-turbo-16k')
         response = openai.Completion.create(
             engine=model_engine,
             prompt=prompt,
-            max_tokens=150,
+            max_tokens=2000,
             n=1,
             stop=None,
             temperature=1,
