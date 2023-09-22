@@ -3,15 +3,14 @@
 # Path: `\run.py`
 # Updated: 09-22-2023
 
+## ## ## ## ## ## ## ## ## ##
 # ⚠️ ACTIVE DEVELOPMENT ⚠️ #
 ## ## ## ## ## ## ## ## ## ##
 
-import promptlayer
 from app.routes import home_routes, upload_routes, archive_routes, clericus_routes
 import os
 import openai
 from flask import Flask
-# Import log configuration
 from core.log_config import run_logger
 
 # Flask configuration
@@ -20,9 +19,6 @@ app = Flask(__name__, template_folder='app/templates',
 
 # OpenAI API key
 openai.api_key = os.environ['OPENAI_API_KEY']
-
-# PromptLayer API key
-promptlayer.api_key = os.getenv('PROMPTLAYER_API_KEY')
 
 # Create uploads directory if it doesn't exist
 if not os.path.exists('uploads'):
