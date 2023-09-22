@@ -1,8 +1,11 @@
+> ![Auto-Archive Logo-Banner](app/static/images/banner-650x100.png)
+>
 > # 📜 Auto-Archive Project Documentation
 >
 > **Program**: **`Auto-Archive`**  
 > **Created by:** **`Joseph T. Antley`**  
 > **Current:** **`v0.0.3-dev [🚧]`**  
+> **Updated:** September 21, 2023
 
 ---
 
