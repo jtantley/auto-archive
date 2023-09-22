@@ -8,12 +8,13 @@
 ## ## ## ## ## ## ## ## ## ##
 
 from dotenv import load_dotenv
-from .clericus_modules.web_search import perform_web_search
-from clericus_modules.openai_module import generate_openai_response
-from clericus_modules.error_handling import handle_generic_error
-from clericus_modules.error_handling import clericus_logger
+from core.clericus_modules.web_search import perform_web_search
+from core.clericus_modules.openai_module import generate_openai_response
+from core.clericus_modules.error_handling import handle_generic_error
+from core.clericus_modules.error_handling import clericus_logger
 
 load_dotenv()
+
 
 def generate_response(user_input, session_id):
     try:
