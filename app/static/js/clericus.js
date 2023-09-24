@@ -1,5 +1,7 @@
+
 // JavaScript for `clericus.html` page
-// Updated: 09-21-2023
+// File path: `app/static/js/clericus.js`
+// Updated: 09-24-2023
 
 $(document).ready(function () {
     $("#send-msg").click(function () {
@@ -7,10 +9,9 @@ $(document).ready(function () {
         var chatMessages = document.getElementById("chat-messages");
         document.getElementById("user_query").value = "";
 
-        var userMsgDiv = document.createElement("div");
-        userMsgDiv.className = "user-message";
-        userMsgDiv.innerHTML = "User: " + userQuery;
-        chatMessages.appendChild(userMsgDiv);
+        // Update to handle newlines in user messages
+        var formattedUserQuery = userQuery.replace(/\n/g, "<br>");
+        chatMessages.innerHTML += "<div class='message-wrapper user-message'><p>" + formattedUserQuery + "</p></div>";
 
         var thinkingElement = document.createElement("div");
         thinkingElement.className = "bot-message thinking";
@@ -24,10 +25,9 @@ $(document).ready(function () {
         })
             .then((response) => response.json())
             .then((data) => {
-                var botMessageElement = document.createElement("div");
-                botMessageElement.className = "bot-message";
-                botMessageElement.innerHTML = "Clericus: " + data.response;
-                chatMessages.replaceChild(botMessageElement, thinkingElement);
+                // Update to handle newlines in Clericus responses
+                var formattedResponse = data.response.replace(/\n/g, "<br>");
+                chatMessages.innerHTML += "<div class='message-wrapper clericus-message'><p>" + formattedResponse + "</p></div>";
             })
             .catch((error) => {
                 var errorMsg = document.createElement("div");
