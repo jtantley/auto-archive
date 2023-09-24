@@ -1,7 +1,7 @@
 # Auto-Archive: Run Module
 # Version: v0.0.3-dev
 # Path: `\run.py`
-# Updated: 09-22-2023
+# Updated: 09-24-2023
 
 #############################
 # ⚠️ ACTIVE DEVELOPMENT ⚠️ #
@@ -10,9 +10,8 @@
 from app.routes import home_routes, upload_routes, archive_routes, clericus_routes
 import os
 import sys
-import openai
 from flask import Flask
-from core.log_config import run_logger
+from core.logger import run_logger
 
 # Add the project directory to the PYTHONPATH
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
@@ -20,9 +19,6 @@ sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 # Flask configuration
 app = Flask(__name__, template_folder='app/templates',
             static_folder='app/static')
-
-# OpenAI API key
-openai.api_key = os.environ['OPENAI_API_KEY']
 
 # Create uploads directory if it doesn't exist
 if not os.path.exists('uploads'):
