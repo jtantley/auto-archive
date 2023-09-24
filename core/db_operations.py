@@ -1,22 +1,17 @@
-# Auto-Archive: Database Operations
-# Path: `\\core\\db_operations.py``
+# Auto-Archive: Database Operations Module
+# Path: `\core\db_operations.py``
 # Version: v0.0.3-dev
-# Updated: 08-30-2023
+# Updated: 09-24-2023
 
-# -- # --- # --- # --- # -- #
 # ⚠️ ACTIVE DEVELOPMENT ⚠️ #
-# -- # --- # --- # --- # -- #
 
 import os
 import psycopg2
 import time
 import uuid
 import logging
-from core.log_config import logging
+from core.logger import logging, db_logger
 from contextlib import closing
-
-#########################################################
-
 
 # SUPABASE POSTGRESQL DATABASE
 
