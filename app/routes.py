@@ -1,24 +1,20 @@
 # Auto-Archive: Routes Module
 # Version: v0.0.3-dev
 # Path: `\app\routes.py`
-# Updated: 09-22-2023
+# Updated: 09-24-2023
 
 # 🚧 ACTIVE DEVELOPMENT 🚧 #
-## ## ## ## ## ## ## ## ## ##
 
 import os
-import openai
 from flask import request, render_template, redirect, url_for, jsonify
 import core.document_processor as document_processor
 import core.db_operations as db_ops
 from core.clericus import generate_response
-from core.log_config import routes_logger
+from core.logger import routes_logger
 
 # Clericus logger
 clericus_logger = routes_logger
 
-# OpenAI API key
-openai.api_key = os.environ['OPENAI_API_KEY']
 
 def clericus_routes(app):  # Routes for Clericus chatbot
     @app.route('/clericus', methods=['GET', 'POST'])
